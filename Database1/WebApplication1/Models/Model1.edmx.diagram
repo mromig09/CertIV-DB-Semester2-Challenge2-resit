@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06fc4fb530f148e69623f5041dd1977a" Name="Diagram1">
+        <EntityTypeShape EntityType="MarkRomigModel.C__RefactorLog" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.cd" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.client" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.customer" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.interest" Width="1.5" PointX="5.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.location" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.log" Width="1.5" PointX="10" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.Owner" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.Pet" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.Procedure" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.product" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.record" Width="1.5" PointX="8" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.sale" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.sale1" Width="1.5" PointX="10.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.special_passion" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.student" Width="1.5" PointX="7.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.TestTable" Width="1.5" PointX="5.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarkRomigModel.Treatment" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="MarkRomigModel.FK__sale__cdID__5FBE24CE" ManuallyRouted="false" />
+        <AssociationConnector Association="MarkRomigModel.FK__clients__passion__5ECA0095" ManuallyRouted="false" />
+        <AssociationConnector Association="MarkRomigModel.FK__sale__60B24907" ManuallyRouted="false" />
+        <AssociationConnector Association="MarkRomigModel.FK__customer__intere__0DB9F9A8" ManuallyRouted="false" />
+        <AssociationConnector Association="MarkRomigModel.FK__sales__1372D2FE" ManuallyRouted="false" />
+        <AssociationConnector Association="MarkRomigModel.FK__log__studentID__538D5813" ManuallyRouted="false" />
+        <AssociationConnector Association="MarkRomigModel.FK__Pet__ownerID__7B9B496D" ManuallyRouted="false" />
+        <AssociationConnector Association="MarkRomigModel.FK__Treatment__7D8391DF" ManuallyRouted="false" />
+        <AssociationConnector Association="MarkRomigModel.FK__Treatment__proce__7C8F6DA6" ManuallyRouted="false" />
+        <AssociationConnector Association="MarkRomigModel.FK__sales__recordID__127EAEC5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

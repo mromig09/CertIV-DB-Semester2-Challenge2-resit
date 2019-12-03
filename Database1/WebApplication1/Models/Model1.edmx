@@ -1,0 +1,952 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MarkRomigModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cd">
+          <Key>
+            <PropertyRef Name="cdID" />
+          </Key>
+          <Property Name="cdID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cdName" Type="varchar" MaxLength="100" />
+          <Property Name="artist" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="clientNumber" />
+            <PropertyRef Name="passionCode" />
+          </Key>
+          <Property Name="clientNumber" Type="int" Nullable="false" />
+          <Property Name="passionCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="postCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerNumber" />
+            <PropertyRef Name="interestCode" />
+          </Key>
+          <Property Name="customerNumber" Type="int" Nullable="false" />
+          <Property Name="interestCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="postcode" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="interests">
+          <Key>
+            <PropertyRef Name="interestCode" />
+          </Key>
+          <Property Name="interestCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="interestDescription" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="locID" />
+          </Key>
+          <Property Name="locID" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="minQty" Type="int" />
+          <Property Name="maxQty" Type="int" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="logID" />
+          </Key>
+          <Property Name="logID" Type="int" Nullable="false" />
+          <Property Name="studentID" Type="int" />
+          <Property Name="dateTimeChanged" Type="nvarchar" MaxLength="1" />
+          <Property Name="dbUser" Type="nvarchar" MaxLength="100" />
+          <Property Name="oldLastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="newLastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="oldFirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="newFirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="oldMobile" Type="int" />
+          <Property Name="newMobile" Type="int" />
+        </EntityType>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="ownerID" />
+          </Key>
+          <Property Name="ownerID" Type="int" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="100" />
+          <Property Name="surname" Type="varchar" MaxLength="100" />
+          <Property Name="phone" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pet">
+          <Key>
+            <PropertyRef Name="ownerID" />
+            <PropertyRef Name="petName" />
+          </Key>
+          <Property Name="ownerID" Type="int" Nullable="false" />
+          <Property Name="petName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Procedure">
+          <Key>
+            <PropertyRef Name="procedureID" />
+          </Key>
+          <Property Name="procedureID" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="prodID" />
+          </Key>
+          <Property Name="prodID" Type="int" Nullable="false" />
+          <Property Name="prodName" Type="nvarchar" MaxLength="100" />
+          <Property Name="sellingPrice" Type="money" />
+          <Property Name="sales_ytd" Type="money" />
+        </EntityType>
+        <EntityType Name="record">
+          <Key>
+            <PropertyRef Name="recordID" />
+          </Key>
+          <Property Name="recordID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="100" />
+          <Property Name="performer" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sale">
+          <Key>
+            <PropertyRef Name="dateOrdered" />
+            <PropertyRef Name="cdID" />
+            <PropertyRef Name="clientNumber" />
+          </Key>
+          <Property Name="dateOrdered" Type="date" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="cdID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="clientNumber" Type="int" Nullable="false" />
+          <Property Name="passionCode" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sales">
+          <Key>
+            <PropertyRef Name="dateOrdered" />
+            <PropertyRef Name="recordID" />
+            <PropertyRef Name="customerNumber" />
+          </Key>
+          <Property Name="dateOrdered" Type="date" Nullable="false" />
+          <Property Name="recordID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="customerNumber" Type="int" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="interestCode" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="special_passion">
+          <Key>
+            <PropertyRef Name="passionCode" />
+          </Key>
+          <Property Name="passionCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="passionDescription" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="studentID" />
+          </Key>
+          <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="mobile" Type="int" />
+        </EntityType>
+        <EntityType Name="TestTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TestData" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Treatment">
+          <Key>
+            <PropertyRef Name="procedureID" />
+            <PropertyRef Name="petName" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="ownerID" />
+          </Key>
+          <Property Name="procedureID" Type="int" Nullable="false" />
+          <Property Name="petName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="ownerID" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="notes" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__clients__passion__5ECA0095">
+          <End Role="special_passion" Type="Self.special_passion" Multiplicity="1" />
+          <End Role="clients" Type="Self.clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="special_passion">
+              <PropertyRef Name="passionCode" />
+            </Principal>
+            <Dependent Role="clients">
+              <PropertyRef Name="passionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__customer__intere__0DB9F9A8">
+          <End Role="interests" Type="Self.interests" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="interests">
+              <PropertyRef Name="interestCode" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="interestCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__log__studentID__538D5813">
+          <End Role="student" Type="Self.student" Multiplicity="0..1" />
+          <End Role="log" Type="Self.log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="log">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pet__ownerID__7B9B496D">
+          <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="ownerID" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="ownerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sale__60B24907">
+          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="sale" Type="Self.sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="clientNumber" />
+              <PropertyRef Name="passionCode" />
+            </Principal>
+            <Dependent Role="sale">
+              <PropertyRef Name="clientNumber" />
+              <PropertyRef Name="passionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sale__cdID__5FBE24CE">
+          <End Role="cd" Type="Self.cd" Multiplicity="1" />
+          <End Role="sale" Type="Self.sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cd">
+              <PropertyRef Name="cdID" />
+            </Principal>
+            <Dependent Role="sale">
+              <PropertyRef Name="cdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sales__1372D2FE">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="sales" Type="Self.sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="interestCode" />
+              <PropertyRef Name="customerNumber" />
+            </Principal>
+            <Dependent Role="sales">
+              <PropertyRef Name="interestCode" />
+              <PropertyRef Name="customerNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sales__recordID__127EAEC5">
+          <End Role="record" Type="Self.record" Multiplicity="1" />
+          <End Role="sales" Type="Self.sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="record">
+              <PropertyRef Name="recordID" />
+            </Principal>
+            <Dependent Role="sales">
+              <PropertyRef Name="recordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Treatment__7D8391DF">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
+          <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="ownerID" />
+              <PropertyRef Name="petName" />
+            </Principal>
+            <Dependent Role="Treatment">
+              <PropertyRef Name="ownerID" />
+              <PropertyRef Name="petName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Treatment__proce__7C8F6DA6">
+          <End Role="Procedure" Type="Self.Procedure" Multiplicity="1" />
+          <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procedure">
+              <PropertyRef Name="procedureID" />
+            </Principal>
+            <Dependent Role="Treatment">
+              <PropertyRef Name="procedureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MarkRomigModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cd" EntityType="Self.cd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clients" EntityType="Self.clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="interests" EntityType="Self.interests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="location" EntityType="Self.location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="log" EntityType="Self.log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pet" EntityType="Self.Pet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Procedure" EntityType="Self.Procedure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record" EntityType="Self.record" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sale" EntityType="Self.sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sales" EntityType="Self.sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="special_passion" EntityType="Self.special_passion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestTable" EntityType="Self.TestTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Treatment" EntityType="Self.Treatment" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__clients__passion__5ECA0095" Association="Self.FK__clients__passion__5ECA0095">
+            <End Role="special_passion" EntitySet="special_passion" />
+            <End Role="clients" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__customer__intere__0DB9F9A8" Association="Self.FK__customer__intere__0DB9F9A8">
+            <End Role="interests" EntitySet="interests" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__log__studentID__538D5813" Association="Self.FK__log__studentID__538D5813">
+            <End Role="student" EntitySet="student" />
+            <End Role="log" EntitySet="log" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pet__ownerID__7B9B496D" Association="Self.FK__Pet__ownerID__7B9B496D">
+            <End Role="Owner" EntitySet="Owner" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sale__60B24907" Association="Self.FK__sale__60B24907">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="sale" EntitySet="sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sale__cdID__5FBE24CE" Association="Self.FK__sale__cdID__5FBE24CE">
+            <End Role="cd" EntitySet="cd" />
+            <End Role="sale" EntitySet="sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sales__1372D2FE" Association="Self.FK__sales__1372D2FE">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="sales" EntitySet="sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sales__recordID__127EAEC5" Association="Self.FK__sales__recordID__127EAEC5">
+            <End Role="record" EntitySet="record" />
+            <End Role="sales" EntitySet="sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Treatment__7D8391DF" Association="Self.FK__Treatment__7D8391DF">
+            <End Role="Pet" EntitySet="Pet" />
+            <End Role="Treatment" EntitySet="Treatment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Treatment__proce__7C8F6DA6" Association="Self.FK__Treatment__proce__7C8F6DA6">
+            <End Role="Procedure" EntitySet="Procedure" />
+            <End Role="Treatment" EntitySet="Treatment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MarkRomigModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cd">
+          <Key>
+            <PropertyRef Name="cdID" />
+          </Key>
+          <Property Name="cdID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cdName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="artist" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sales" Relationship="Self.FK__sale__cdID__5FBE24CE" FromRole="cd" ToRole="sale" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="clientNumber" />
+            <PropertyRef Name="passionCode" />
+          </Key>
+          <Property Name="clientNumber" Type="Int32" Nullable="false" />
+          <Property Name="passionCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="special_passion" Relationship="Self.FK__clients__passion__5ECA0095" FromRole="clients" ToRole="special_passion" />
+          <NavigationProperty Name="sales" Relationship="Self.FK__sale__60B24907" FromRole="clients" ToRole="sale" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerNumber" />
+            <PropertyRef Name="interestCode" />
+          </Key>
+          <Property Name="customerNumber" Type="Int32" Nullable="false" />
+          <Property Name="interestCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="interest" Relationship="Self.FK__customer__intere__0DB9F9A8" FromRole="customer" ToRole="interests" />
+          <NavigationProperty Name="sales" Relationship="Self.FK__sales__1372D2FE" FromRole="customer" ToRole="sales" />
+        </EntityType>
+        <EntityType Name="interest">
+          <Key>
+            <PropertyRef Name="interestCode" />
+          </Key>
+          <Property Name="interestCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="interestDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="customers" Relationship="Self.FK__customer__intere__0DB9F9A8" FromRole="interests" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="locID" />
+          </Key>
+          <Property Name="locID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="minQty" Type="Int32" />
+          <Property Name="maxQty" Type="Int32" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="logID" />
+          </Key>
+          <Property Name="logID" Type="Int32" Nullable="false" />
+          <Property Name="studentID" Type="Int32" />
+          <Property Name="dateTimeChanged" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="dbUser" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="oldLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="newLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="oldFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="newFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="oldMobile" Type="Int32" />
+          <Property Name="newMobile" Type="Int32" />
+          <NavigationProperty Name="student" Relationship="Self.FK__log__studentID__538D5813" FromRole="log" ToRole="student" />
+        </EntityType>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="ownerID" />
+          </Key>
+          <Property Name="ownerID" Type="Int32" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="surname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pets" Relationship="Self.FK__Pet__ownerID__7B9B496D" FromRole="Owner" ToRole="Pet" />
+        </EntityType>
+        <EntityType Name="Pet">
+          <Key>
+            <PropertyRef Name="ownerID" />
+            <PropertyRef Name="petName" />
+          </Key>
+          <Property Name="ownerID" Type="Int32" Nullable="false" />
+          <Property Name="petName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Owner" Relationship="Self.FK__Pet__ownerID__7B9B496D" FromRole="Pet" ToRole="Owner" />
+          <NavigationProperty Name="Treatments" Relationship="Self.FK__Treatment__7D8391DF" FromRole="Pet" ToRole="Treatment" />
+        </EntityType>
+        <EntityType Name="Procedure">
+          <Key>
+            <PropertyRef Name="procedureID" />
+          </Key>
+          <Property Name="procedureID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Treatments" Relationship="Self.FK__Treatment__proce__7C8F6DA6" FromRole="Procedure" ToRole="Treatment" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="prodID" />
+          </Key>
+          <Property Name="prodID" Type="Int32" Nullable="false" />
+          <Property Name="prodName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="sellingPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="sales_ytd" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="record">
+          <Key>
+            <PropertyRef Name="recordID" />
+          </Key>
+          <Property Name="recordID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="performer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sales" Relationship="Self.FK__sales__recordID__127EAEC5" FromRole="record" ToRole="sales" />
+        </EntityType>
+        <EntityType Name="sale">
+          <Key>
+            <PropertyRef Name="dateOrdered" />
+            <PropertyRef Name="cdID" />
+            <PropertyRef Name="clientNumber" />
+          </Key>
+          <Property Name="dateOrdered" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="cdID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="clientNumber" Type="Int32" Nullable="false" />
+          <Property Name="passionCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="cd" Relationship="Self.FK__sale__cdID__5FBE24CE" FromRole="sale" ToRole="cd" />
+          <NavigationProperty Name="client" Relationship="Self.FK__sale__60B24907" FromRole="sale" ToRole="clients" />
+        </EntityType>
+        <EntityType Name="sale1">
+          <Key>
+            <PropertyRef Name="dateOrdered" />
+            <PropertyRef Name="recordID" />
+            <PropertyRef Name="customerNumber" />
+          </Key>
+          <Property Name="dateOrdered" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="recordID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customerNumber" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="interestCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__sales__1372D2FE" FromRole="sales" ToRole="customer" />
+          <NavigationProperty Name="record" Relationship="Self.FK__sales__recordID__127EAEC5" FromRole="sales" ToRole="record" />
+        </EntityType>
+        <EntityType Name="special_passion">
+          <Key>
+            <PropertyRef Name="passionCode" />
+          </Key>
+          <Property Name="passionCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passionDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="clients" Relationship="Self.FK__clients__passion__5ECA0095" FromRole="special_passion" ToRole="clients" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="studentID" />
+          </Key>
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mobile" Type="Int32" />
+          <NavigationProperty Name="logs" Relationship="Self.FK__log__studentID__538D5813" FromRole="student" ToRole="log" />
+        </EntityType>
+        <EntityType Name="TestTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TestData" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Treatment">
+          <Key>
+            <PropertyRef Name="procedureID" />
+            <PropertyRef Name="petName" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="ownerID" />
+          </Key>
+          <Property Name="procedureID" Type="Int32" Nullable="false" />
+          <Property Name="petName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ownerID" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK__Treatment__7D8391DF" FromRole="Treatment" ToRole="Pet" />
+          <NavigationProperty Name="Procedure" Relationship="Self.FK__Treatment__proce__7C8F6DA6" FromRole="Treatment" ToRole="Procedure" />
+        </EntityType>
+        <Association Name="FK__sale__cdID__5FBE24CE">
+          <End Role="cd" Type="Self.cd" Multiplicity="1" />
+          <End Role="sale" Type="Self.sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cd">
+              <PropertyRef Name="cdID" />
+            </Principal>
+            <Dependent Role="sale">
+              <PropertyRef Name="cdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__clients__passion__5ECA0095">
+          <End Role="special_passion" Type="Self.special_passion" Multiplicity="1" />
+          <End Role="clients" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="special_passion">
+              <PropertyRef Name="passionCode" />
+            </Principal>
+            <Dependent Role="clients">
+              <PropertyRef Name="passionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sale__60B24907">
+          <End Role="clients" Type="Self.client" Multiplicity="1" />
+          <End Role="sale" Type="Self.sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="clientNumber" />
+              <PropertyRef Name="passionCode" />
+            </Principal>
+            <Dependent Role="sale">
+              <PropertyRef Name="clientNumber" />
+              <PropertyRef Name="passionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__customer__intere__0DB9F9A8">
+          <End Role="interests" Type="Self.interest" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="interests">
+              <PropertyRef Name="interestCode" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="interestCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sales__1372D2FE">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="sales" Type="Self.sale1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="interestCode" />
+              <PropertyRef Name="customerNumber" />
+            </Principal>
+            <Dependent Role="sales">
+              <PropertyRef Name="interestCode" />
+              <PropertyRef Name="customerNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__log__studentID__538D5813">
+          <End Role="student" Type="Self.student" Multiplicity="0..1" />
+          <End Role="log" Type="Self.log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="studentID" />
+            </Principal>
+            <Dependent Role="log">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pet__ownerID__7B9B496D">
+          <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="ownerID" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="ownerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Treatment__7D8391DF">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
+          <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="ownerID" />
+              <PropertyRef Name="petName" />
+            </Principal>
+            <Dependent Role="Treatment">
+              <PropertyRef Name="ownerID" />
+              <PropertyRef Name="petName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Treatment__proce__7C8F6DA6">
+          <End Role="Procedure" Type="Self.Procedure" Multiplicity="1" />
+          <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procedure">
+              <PropertyRef Name="procedureID" />
+            </Principal>
+            <Dependent Role="Treatment">
+              <PropertyRef Name="procedureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sales__recordID__127EAEC5">
+          <End Role="record" Type="Self.record" Multiplicity="1" />
+          <End Role="sales" Type="Self.sale1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="record">
+              <PropertyRef Name="recordID" />
+            </Principal>
+            <Dependent Role="sales">
+              <PropertyRef Name="recordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MarkRomigEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="cds" EntityType="Self.cd" />
+          <EntitySet Name="clients" EntityType="Self.client" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="interests" EntityType="Self.interest" />
+          <EntitySet Name="locations" EntityType="Self.location" />
+          <EntitySet Name="logs" EntityType="Self.log" />
+          <EntitySet Name="Owners" EntityType="Self.Owner" />
+          <EntitySet Name="Pets" EntityType="Self.Pet" />
+          <EntitySet Name="Procedures" EntityType="Self.Procedure" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="records" EntityType="Self.record" />
+          <EntitySet Name="sales" EntityType="Self.sale" />
+          <EntitySet Name="sales1" EntityType="Self.sale1" />
+          <EntitySet Name="special_passion" EntityType="Self.special_passion" />
+          <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="TestTables" EntityType="Self.TestTable" />
+          <EntitySet Name="Treatments" EntityType="Self.Treatment" />
+          <AssociationSet Name="FK__sale__cdID__5FBE24CE" Association="Self.FK__sale__cdID__5FBE24CE">
+            <End Role="cd" EntitySet="cds" />
+            <End Role="sale" EntitySet="sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__clients__passion__5ECA0095" Association="Self.FK__clients__passion__5ECA0095">
+            <End Role="special_passion" EntitySet="special_passion" />
+            <End Role="clients" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sale__60B24907" Association="Self.FK__sale__60B24907">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="sale" EntitySet="sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__customer__intere__0DB9F9A8" Association="Self.FK__customer__intere__0DB9F9A8">
+            <End Role="interests" EntitySet="interests" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sales__1372D2FE" Association="Self.FK__sales__1372D2FE">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="sales" EntitySet="sales1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__log__studentID__538D5813" Association="Self.FK__log__studentID__538D5813">
+            <End Role="student" EntitySet="students" />
+            <End Role="log" EntitySet="logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pet__ownerID__7B9B496D" Association="Self.FK__Pet__ownerID__7B9B496D">
+            <End Role="Owner" EntitySet="Owners" />
+            <End Role="Pet" EntitySet="Pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Treatment__7D8391DF" Association="Self.FK__Treatment__7D8391DF">
+            <End Role="Pet" EntitySet="Pets" />
+            <End Role="Treatment" EntitySet="Treatments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Treatment__proce__7C8F6DA6" Association="Self.FK__Treatment__proce__7C8F6DA6">
+            <End Role="Procedure" EntitySet="Procedures" />
+            <End Role="Treatment" EntitySet="Treatments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sales__recordID__127EAEC5" Association="Self.FK__sales__recordID__127EAEC5">
+            <End Role="record" EntitySet="records" />
+            <End Role="sales" EntitySet="sales1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MarkRomigModelStoreContainer" CdmEntityContainer="MarkRomigEntities1">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="MarkRomigModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cds">
+            <EntityTypeMapping TypeName="MarkRomigModel.cd">
+              <MappingFragment StoreEntitySet="cd">
+                <ScalarProperty Name="cdID" ColumnName="cdID" />
+                <ScalarProperty Name="cdName" ColumnName="cdName" />
+                <ScalarProperty Name="artist" ColumnName="artist" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="MarkRomigModel.client">
+              <MappingFragment StoreEntitySet="clients">
+                <ScalarProperty Name="clientNumber" ColumnName="clientNumber" />
+                <ScalarProperty Name="passionCode" ColumnName="passionCode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="postCode" ColumnName="postCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="MarkRomigModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="customerNumber" ColumnName="customerNumber" />
+                <ScalarProperty Name="interestCode" ColumnName="interestCode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="interests">
+            <EntityTypeMapping TypeName="MarkRomigModel.interest">
+              <MappingFragment StoreEntitySet="interests">
+                <ScalarProperty Name="interestCode" ColumnName="interestCode" />
+                <ScalarProperty Name="interestDescription" ColumnName="interestDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locations">
+            <EntityTypeMapping TypeName="MarkRomigModel.location">
+              <MappingFragment StoreEntitySet="location">
+                <ScalarProperty Name="locID" ColumnName="locID" />
+                <ScalarProperty Name="minQty" ColumnName="minQty" />
+                <ScalarProperty Name="maxQty" ColumnName="maxQty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logs">
+            <EntityTypeMapping TypeName="MarkRomigModel.log">
+              <MappingFragment StoreEntitySet="log">
+                <ScalarProperty Name="logID" ColumnName="logID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="dateTimeChanged" ColumnName="dateTimeChanged" />
+                <ScalarProperty Name="dbUser" ColumnName="dbUser" />
+                <ScalarProperty Name="oldLastName" ColumnName="oldLastName" />
+                <ScalarProperty Name="newLastName" ColumnName="newLastName" />
+                <ScalarProperty Name="oldFirstName" ColumnName="oldFirstName" />
+                <ScalarProperty Name="newFirstName" ColumnName="newFirstName" />
+                <ScalarProperty Name="oldMobile" ColumnName="oldMobile" />
+                <ScalarProperty Name="newMobile" ColumnName="newMobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="MarkRomigModel.Owner">
+              <MappingFragment StoreEntitySet="Owner">
+                <ScalarProperty Name="ownerID" ColumnName="ownerID" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pets">
+            <EntityTypeMapping TypeName="MarkRomigModel.Pet">
+              <MappingFragment StoreEntitySet="Pet">
+                <ScalarProperty Name="ownerID" ColumnName="ownerID" />
+                <ScalarProperty Name="petName" ColumnName="petName" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Procedures">
+            <EntityTypeMapping TypeName="MarkRomigModel.Procedure">
+              <MappingFragment StoreEntitySet="Procedure">
+                <ScalarProperty Name="procedureID" ColumnName="procedureID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="MarkRomigModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="prodID" ColumnName="prodID" />
+                <ScalarProperty Name="prodName" ColumnName="prodName" />
+                <ScalarProperty Name="sellingPrice" ColumnName="sellingPrice" />
+                <ScalarProperty Name="sales_ytd" ColumnName="sales_ytd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="records">
+            <EntityTypeMapping TypeName="MarkRomigModel.record">
+              <MappingFragment StoreEntitySet="record">
+                <ScalarProperty Name="recordID" ColumnName="recordID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="performer" ColumnName="performer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sales">
+            <EntityTypeMapping TypeName="MarkRomigModel.sale">
+              <MappingFragment StoreEntitySet="sale">
+                <ScalarProperty Name="dateOrdered" ColumnName="dateOrdered" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="cdID" ColumnName="cdID" />
+                <ScalarProperty Name="clientNumber" ColumnName="clientNumber" />
+                <ScalarProperty Name="passionCode" ColumnName="passionCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sales1">
+            <EntityTypeMapping TypeName="MarkRomigModel.sale1">
+              <MappingFragment StoreEntitySet="sales">
+                <ScalarProperty Name="dateOrdered" ColumnName="dateOrdered" />
+                <ScalarProperty Name="recordID" ColumnName="recordID" />
+                <ScalarProperty Name="customerNumber" ColumnName="customerNumber" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="interestCode" ColumnName="interestCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="special_passion">
+            <EntityTypeMapping TypeName="MarkRomigModel.special_passion">
+              <MappingFragment StoreEntitySet="special_passion">
+                <ScalarProperty Name="passionCode" ColumnName="passionCode" />
+                <ScalarProperty Name="passionDescription" ColumnName="passionDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="MarkRomigModel.student">
+              <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestTables">
+            <EntityTypeMapping TypeName="MarkRomigModel.TestTable">
+              <MappingFragment StoreEntitySet="TestTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TestData" ColumnName="TestData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Treatments">
+            <EntityTypeMapping TypeName="MarkRomigModel.Treatment">
+              <MappingFragment StoreEntitySet="Treatment">
+                <ScalarProperty Name="procedureID" ColumnName="procedureID" />
+                <ScalarProperty Name="petName" ColumnName="petName" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="ownerID" ColumnName="ownerID" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="86ab5168-c880-4c0b-9102-2f45bf84f547" ChangeDateTime="12/02/2019 22:22:55">
+    <Property Name="ElementName" Value="[dbo].[clients].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[clients]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="clientNumber" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="43ff3533-ac54-4f5a-9b49-51005dc931ee" ChangeDateTime="12/02/2019 22:25:56">
+    <Property Name="ElementName" Value="[dbo].[cd].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[cd]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="cdID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f800ea09-d311-409c-9a6b-ce42db78829b" ChangeDateTime="12/02/2019 22:26:46">
+    <Property Name="ElementName" Value="[dbo].[special passion].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[special passion]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="passionCode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="77a25199-1019-4027-a025-cafb2306e2b8" ChangeDateTime="12/02/2019 22:27:29">
+    <Property Name="ElementName" Value="[dbo].[sale].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[sale]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dateOrdered" />
+  </Operation>
+</Operations>
